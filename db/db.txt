@@ -1,0 +1,16 @@
+GAMES
+id
+game_title
+developer_id
+category_id
+
+DEVELOPERS
+id
+name
+
+
+CATEGORIES
+id
+name
+
+CREATE TABLE inventory_games(id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY, title VARCHAR(20), developer_id INT, category_id INT);
