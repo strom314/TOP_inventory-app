@@ -6,11 +6,17 @@ function getIndex(req, res) {
 
 async function getGames(req, res) {
   const games = await db.getAllGames();
-  console.log(games);
 
   res.render("games", { games: games });
 }
-function getGame(req, res) {}
+async function getGame(req, res) {
+  const gameArr = await db.getGame(req.params.gameId);
+  const game = gameArr[0];
+  const categoryArr = await db.getCategory(game.category_id);
+  const category = categoryArr[0];
+
+  res.render("game", { game: game, category: category });
+}
 async function getCategories(req, res) {
   const categories = await db.getAllCategories();
   res.render("categories", { categories: categories });

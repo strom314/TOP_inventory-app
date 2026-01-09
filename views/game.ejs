@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= game.title %></title>
+  </head>
+  <body>
+    <%- include("./partials/navbar.ejs") %>
+    <h1><%= game.id %> <%= game.title %></h1>
+    <div><%= game.price %></div>
+    <div>category: <%= category.title %></div>
+    <a href="/games">back</a>
+  </body>
+</html>
