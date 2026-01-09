@@ -38,7 +38,7 @@ async function createGame(title, price, category_id) {
   );
 }
 async function createCategory(name) {
-  await pool.query(`INSERT INTO categories(name) VALUES($1)`, [name]);
+  await pool.query(`INSERT INTO categories(title) VALUES($1)`, [name]);
 }
 
 //UPDATE QUERIES

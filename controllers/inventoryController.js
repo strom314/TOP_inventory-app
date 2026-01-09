@@ -39,8 +39,13 @@ async function postNewGame(req, res) {
   res.redirect("/games");
 }
 
-async function getNewCategory() {}
-async function postNewCategory() {}
+async function getNewCategory(req, res) {
+  res.render("newCategory");
+}
+async function postNewCategory(req, res) {
+  await db.createCategory(req.body.title);
+  res.redirect("/categories");
+}
 
 module.exports = {
   getIndex,
