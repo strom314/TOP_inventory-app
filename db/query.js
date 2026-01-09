@@ -26,7 +26,7 @@ async function getGamesByCategory(categoryId) {
   const games = await pool.query(
     `SELECT * FROM games WHERE category_id=${categoryId}`
   );
-  return games;
+  return games.rows;
 }
 
 //CREATE QUERIES
