@@ -26,15 +26,28 @@ async function getCategory(id) {
 
 //CREATE QUERIES
 
-async function createGame(title, price, developer_id, category_id) {
+async function createGame(title, price, category_id) {
   await pool.query(
-    `INSERT INTO inventory_games(title, price, developer_id, category_id) VALUES ($1, $2, $3, $4)`,
-    [title, price, developer_id, category_id]
+    `INSERT INTO inventory_games(title, price, category_id) VALUES ($1, $2, $3)`,
+    [title, price, category_id]
   );
 }
 async function createCategory(name) {
   await pool.query(`INSERT INTO inventory_categories(name) VALUES($1)`, [name]);
 }
+
+//UPDATE QUERIES
+
+async function updateGame(id, title, price, category_id) {
+  await pool.query(
+    `UPDATE inventory_games SET title=$1, price=$2, category_id=$3 WHERE id=${id}`,
+    [title, price, category_id]
+  );
+}
+
+//DELETE QUERIES
+
+async function
 
 module.exports = {
   getAllGames,
