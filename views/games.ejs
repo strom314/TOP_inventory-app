@@ -3,11 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>index</title>
+    <title>games</title>
   </head>
   <body>
     <%- include("./partials/navbar") %>
-    <h1>home page</h1>
-    <div>welcome</div>
+    <h1>available games</h1>
+    <ul>
+      <% games.forEach(game => { %>
+      <li><%= game.title %></li>
+      <% }) %>
+    </ul>
   </body>
 </html>

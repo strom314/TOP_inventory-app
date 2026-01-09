@@ -2,13 +2,11 @@ GAMES
 id
 title
 price
-developer_id
 category_id
-
-
 
 CATEGORIES
 id
 name
 
-CREATE TABLE inventory_games(id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY, title VARCHAR(20),price INT, developer_id INT, category_id INT);
+CREATE TABLE games(id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY, title VARCHAR(20),price INT, category_id INT);
+CREATE TABLE categories(id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY, title VARCHAR(20));
