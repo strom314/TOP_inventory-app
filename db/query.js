@@ -47,7 +47,12 @@ async function updateGame(id, title, price, category_id) {
 
 //DELETE QUERIES
 
-async function
+async function deleteGame(id) {
+  await pool.query(`DELETE FROM inventory_games WHERE id=${id}`);
+}
+async function deleteCategory(id) {
+  await pool.query(`DELETE FROM inventory_categories WHERE id=${id}`);
+}
 
 module.exports = {
   getAllGames,
