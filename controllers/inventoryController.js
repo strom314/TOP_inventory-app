@@ -28,8 +28,12 @@ async function getCategory(req, res) {
 
   res.render("category", { category: category, gamesArr: gamesArr });
 }
-function getNewFormPage(req, res) {}
-function postNew(req, res) {}
+
+async function getNewGame() {}
+async function postNewGame() {}
+
+async function getNewCategory() {}
+async function postNewCategory() {}
 
 module.exports = {
   getIndex,
@@ -37,6 +41,8 @@ module.exports = {
   getGame,
   getCategories,
   getCategory,
-  getNewFormPage,
-  postNew,
+  getNewGame,
+  postNewGame,
+  getNewCategory,
+  postNewCategory,
 };
