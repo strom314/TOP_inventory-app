@@ -21,7 +21,13 @@ async function getCategories(req, res) {
   const categories = await db.getAllCategories();
   res.render("categories", { categories: categories });
 }
-function getCategory(req, res) {}
+async function getCategory(req, res) {
+  const categoryArr = await db.getCategory(req.params.categoryId);
+  const category = categoryArr[0];
+  const gamesArr = await db.getGamesByCategory(category.id);
+
+  res.render("category", { category: category, gamesArr: gamesArr });
+}
 function getNewFormPage(req, res) {}
 function postNew(req, res) {}
 

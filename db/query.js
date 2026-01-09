@@ -22,6 +22,13 @@ async function getCategory(id) {
   return category.rows;
 }
 
+async function getGamesByCategory(categoryId) {
+  const games = await pool.query(
+    `SELECT * FROM games WHERE category_id=${categoryId}`
+  );
+  return games;
+}
+
 //CREATE QUERIES
 
 async function createGame(title, price, category_id) {
@@ -57,4 +64,5 @@ module.exports = {
   getAllCategories,
   getGame,
   getCategory,
+  getGamesByCategory,
 };
