@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const path = require("node:path");
 const inventoryRouter = require("./routes/inventoryRouter");
+const populateDb = require("./db/populateDb");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));

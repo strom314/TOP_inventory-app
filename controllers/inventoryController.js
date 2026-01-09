@@ -11,7 +11,10 @@ async function getGames(req, res) {
   res.render("games", { games: games });
 }
 function getGame(req, res) {}
-function getCategories(req, res) {}
+async function getCategories(req, res) {
+  const categories = await db.getAllCategories();
+  res.render("categories", { categories: categories });
+}
 function getCategory(req, res) {}
 function getNewFormPage(req, res) {}
 function postNew(req, res) {}
