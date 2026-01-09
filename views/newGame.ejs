@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>add game</title>
+  </head>
+  <body>
+    <%- include("./partials/navbar") %>
+    <h1>add new game</h1>
+    <form action="/games/new" method="post">
+      <label for="title">title</label>
+      <input type="text" name="title" id="title" />
+
+      <label for="price">price</label>
+      <input type="number" name="price" id="price" />
+
+      <label for="categories">categories</label>
+      <select name="categories" id="categories">
+        <% categories.forEach(category => { %>
+        <option value="<%= category.id %>"><%= category.title %></option>
+        <% }) %>
+      </select>
+
+      <button type="submit">submit</button>
+    </form>
+  </body>
+</html>

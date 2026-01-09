@@ -29,8 +29,15 @@ async function getCategory(req, res) {
   res.render("category", { category: category, gamesArr: gamesArr });
 }
 
-async function getNewGame() {}
-async function postNewGame() {}
+async function getNewGame(req, res) {
+  const categoriesArr = await db.getAllCategories();
+
+  res.render("newGame", { categories: categoriesArr });
+}
+async function postNewGame(req, res) {
+  await db.createGame(req.body.title, req.body.price, req.body.categories);
+  res.redirect("/games");
+}
 
 async function getNewCategory() {}
 async function postNewCategory() {}

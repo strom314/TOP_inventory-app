@@ -65,4 +65,6 @@ module.exports = {
   getGame,
   getCategory,
   getGamesByCategory,
+  createGame,
+  createCategory,
 };
