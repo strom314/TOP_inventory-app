@@ -8,13 +8,13 @@
   <body>
     <%- include("./partials/navbar") %>
     <h1>update game</h1>
-    <form action="/games/:gameId/update" method="post">
+    <form action="/games/<%= game.id %>/update" method="post">
       <label for="title">title</label>
-      <input type="text" name="title" id="title" value="<%" ="game.title" % />/>
+      <input type="text" name="title" id="title" value="<%= game.title %>" />
 
       <label for="price">price</label>
-      <input type="number" name="price" id="price" value="<%" ="game.price" % />
-      />
+      <input type="number" name="price" id="price" value="<%= game.price %>" />
+
 
       <label for="categories">categories</label>
       <select name="categories" id="categories">
@@ -25,5 +25,6 @@
 
       <button type="submit">update</button>
     </form>
+    <a href="/games/<%= game.id %>">back</a>
   </body>
 </html>

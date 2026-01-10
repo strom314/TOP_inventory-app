@@ -10,6 +10,7 @@
     <h1><%= game.id %> <%= game.title %></h1>
     <div><%= game.price %></div>
     <div>category: <%= category.title %></div>
+    <a href="<%= `/games/${game.id}/update` %>">update game</a>
     <a href="/games">back</a>
   </body>
 </html>
