@@ -47,6 +47,20 @@ async function postNewCategory(req, res) {
   res.redirect("/categories");
 }
 
+async function getUpdateGame(req, res) {
+  const gameArr = await db.getGame(req.params.gameId);
+  const game = gameArr[0];
+  res.render("updateGame", { game: game });
+}
+async function postUpdateGame(req, res) {
+  await db.updateGame(
+    req.params.gameId,
+    req.body.title,
+    req.body.price,
+    req.body.categories
+  );
+}
+
 module.exports = {
   getIndex,
   getGames,
@@ -57,4 +71,6 @@ module.exports = {
   postNewGame,
   getNewCategory,
   postNewCategory,
+  getUpdateGame,
+  postUpdateGame,
 };
