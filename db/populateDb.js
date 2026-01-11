@@ -3,7 +3,7 @@ const { Client } = require("pg");
 const SQL = `
 CREATE TABLE IF NOT EXISTS games(
 id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-title VARCHAR(20),
+title VARCHAR(40),
 price INT, 
 category_id INT);
 
