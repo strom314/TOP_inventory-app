@@ -10,7 +10,7 @@
     <h1>available games</h1>
     <ul>
       <% games.forEach(game => { %>
-      <li><%= game.title %> <a href=<%= `/games/${game.id}` %>>see details</a></li>
+      <li><%= game.title %> <a href=<%= `/games/${game.id}` %>>see details</a> <a href="/games/<%= game.id %>/delete">delete game</a></li>
       <% }) %>
     </ul>
     <a href="/games/new">add game</a>

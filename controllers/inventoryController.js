@@ -13,7 +13,7 @@ async function getGame(req, res) {
   const gameArr = await db.getGame(req.params.gameId);
   const game = gameArr[0];
   const categoryArr = await db.getCategory(game.category_id);
-  const category = categoryArr[0];
+  const category = categoryArr[0] || { title: "missing" };
 
   res.render("game", { game: game, category: category });
 }
@@ -63,6 +63,15 @@ async function postUpdateGame(req, res) {
   res.redirect("/games");
 }
 
+async function getDeleteGame(req, res) {
+  await db.deleteGame(req.params.gameId);
+  res.redirect("/games");
+}
+async function getDeleteCategory(req, res) {
+  await db.deleteCategory(req.params.categoryId);
+  res.redirect("/categories");
+}
+
 module.exports = {
   getIndex,
   getGames,
@@ -75,4 +84,6 @@ module.exports = {
   postNewCategory,
   getUpdateGame,
   postUpdateGame,
+  getDeleteGame,
+  getDeleteCategory,
 };
