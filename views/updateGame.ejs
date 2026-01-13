@@ -10,10 +10,10 @@
     <h1>update game</h1>
     <form action="/games/<%= game.id %>/update" method="post">
       <label for="title">title</label>
-      <input type="text" name="title" id="title" value="<%= game.title %>" />
+      <input type="text" name="title" id="title" value="<%= game.title %>" required/>
 
       <label for="price">price</label>
-      <input type="number" name="price" id="price" value="<%= game.price %>" />
+      <input type="number" name="price" id="price" value="<%= game.price %>" required/>
 
 
       <label for="categories">categories</label>
