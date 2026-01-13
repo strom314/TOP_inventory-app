@@ -1,4 +1,5 @@
 const db = require("../db/query");
+const { matchedData, validationResult } = require("express-validator");
 
 function getIndex(req, res) {
   res.render("index");
@@ -35,7 +36,15 @@ async function getNewGame(req, res) {
   res.render("newGame", { categories: categoriesArr });
 }
 async function postNewGame(req, res) {
-  await db.createGame(req.body.title, req.body.price, req.body.categories);
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const categories = await db.getAllCategories();
+    return res
+      .status(400)
+      .render("newGame", { errors: errors.array(), categories: categories });
+  }
+  const { title, price, categories } = matchedData(req);
+  await db.createGame(title, price, categories);
   res.redirect("/games");
 }
 
