@@ -63,12 +63,18 @@ async function getUpdateGame(req, res) {
   res.render("updateGame", { game: game, categories: categoryArr });
 }
 async function postUpdateGame(req, res) {
-  await db.updateGame(
-    req.params.gameId,
-    req.body.title,
-    req.body.price,
-    req.body.categories
-  );
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const game = await db.getGame(req.params.gameId);
+    const categories = await db.getAllCategories();
+    return res.status(400).render("updateGame", {
+      game: game[0],
+      categories: categories,
+      errors: errors.array(),
+    });
+  }
+  const { title, price, categories } = matchedData(req);
+  await db.updateGame(req.params.gameId, title, price, categories);
   res.redirect("/games");
 }
 
