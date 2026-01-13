@@ -52,7 +52,12 @@ async function getNewCategory(req, res) {
   res.render("newCategory");
 }
 async function postNewCategory(req, res) {
-  await db.createCategory(req.body.title);
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).render("newCategory", { errors: errors.array() });
+  }
+  const { title } = matchedData(req);
+  await db.createCategory(title);
   res.redirect("/categories");
 }
 
